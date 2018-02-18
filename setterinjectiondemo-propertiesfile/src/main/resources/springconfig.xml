@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <!-- Loading properties file (make sure u have "xmlns:context" in config file in schema defination) -->
+   <context:property-placeholder location="classpath:spring.properties"/>
+
+	<!-- A simple Dependent bean definition -->
+	<bean id="myQuotesService"
+		class="com.learntocode.springcore.setterinjection.impl.MotivationalQuotes">
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+
+	<!-- Bean defination of Physicsteacher class which depends on MotivationalQuotes -->
+	<bean id="teacherService"
+		class="com.learntocode.springcore.setterinjection.impl.PhysicsTeacher">
+
+		<!-- Setter injection using ref attribute to refer dependent class-.It 
+			will set the "quotesService" in class PhysicsTeacher with "MotivationalQuotes" 
+			bean using setter method -->
+		<property name="quotesService" ref="myQuotesService" />
+
+		<!-- injectcing literal values using setter injection from properties value(Recomended)-->
+		<property name="name" value="${teacherName}"/>
+		<property name="age" value="${teacherAge}" />
+		<property name="city" value="${teacherCity}"  />
+		
+		<!-- injectcing literal values using setter injection directly-->
+		<property name="email" value="abhi@gmail.com"/>
+	</bean>
+
+</beans>

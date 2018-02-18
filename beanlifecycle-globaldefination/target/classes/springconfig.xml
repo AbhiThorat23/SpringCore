@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Global definition applicable to all beans defined in beans context. 
+		These methods will be invoked for all bean definitions given under <beans> 
+		tag. They are useful when you have a pattern of defining common method names 
+		such as init() and destroy() for all your beans consistently. This feature 
+		helps you in not mentioning the init and destroy method names for all beans 
+		independently. -->
+	
+	<beans default-init-method="customInit" default-destroy-method="customDestroy">
+		<bean id="myHundaiCar"
+			class="com.learntocode.springcore.beanscopedemo.impl.HundaiCar" />
+
+
+		<bean id="mySwiftCar"
+			class="com.learntocode.springcore.beanscopedemo.impl.SwiftDesireCar" />
+
+	</beans>
+
+</beans>

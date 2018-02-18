@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!-- Demo for Different Bean Scope (Singleton and Prototype) -->
+
+	<!--Default Bean scope of bean is "Singleton" : Only one shared instance 
+		of a singleton bean is managed, and all requests for beans with an id or 
+		ids matching that bean definition result in that one specific bean instance 
+		being returned by the Spring container. To put it another way, when you define 
+		a bean definition and it is scoped as a singleton, the Spring IoC container 
+		creates exactly one instance of the object defined by that bean definition. 
+		This single instance is stored in a cache of such singleton beans, and all 
+		subsequent requests and references for that named bean return the cached 
+		object. -->
+
+	<bean id="myHundaiCar" class="com.learntocode.springcore.beanscopedemo.impl.HundaiCar" />
+
+
+
+	<!-- The following is equivalent, though redundant (singleton scope is the 
+		default); 
+	<bean id="myCar" class="com.learntocode.springcore.beanscopedemo.impl.Car" scope="singleton" /> -->
+
+
+	<!-- Prototype Scope : Return a new bean instance each time when requested. 
+		That is, the bean is injected into another bean or you request it through 
+		a getBean() method call on the container. As a rule, use the prototype scope 
+		for all stateful beans and the singleton scope for stateless beans. -->
+	<bean id="mySwiftCar" class="com.learntocode.springcore.beanscopedemo.impl.SwiftDesireCar" scope = "prototype" />
+
+</beans>
